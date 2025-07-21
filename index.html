@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kantor Akuntan Publik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100">
+   <!-- Navbar -->
+<header class="bg-slate-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      
+      <!-- Logo + Nama -->
+      <div class="flex items-center space-x-3">
+        <img src="logo.jpg" alt="Logo" class="h-20 w-20 object-contain" />
+        <div class="text-xl font-bold">Kantor Akuntan Publik</div>
+      </div>
+
+      <!-- Menu Desktop -->
+      <div class="hidden md:flex space-x-8">
+        <a href="#" class="hover:text-cyan-400 transition">Beranda</a>
+        <a href="#tentang" class="hover:text-cyan-400 transition">Tentang</a>
+        <a href="#layanan" class="hover:text-cyan-400 transition">Layanan</a>
+        <a href="#" class="hover:text-cyan-400 transition">Kontak</a>
+      </div>
+
+      <!-- Hamburger Button -->
+      <div class="md:hidden">
+        <button id="menu-btn" class="text-2xl focus:outline-none">☰</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden hidden px-4 pb-4">
+    <a href="#" class="block py-2 text-sm hover:text-cyan-400">Beranda</a>
+    <a href="#tentang" class="block py-2 text-sm hover:text-cyan-400">Tentang</a>
+    <a href="#layanan" class="block py-2 text-sm hover:text-cyan-400">Layanan</a>
+    <a href="#" class="block py-2 text-sm hover:text-cyan-400">Kontak</a>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("mobile-menu");
+
+  btn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+  });
+</script>
+
+
+        <!-- Jumbotron -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jumbotron Carousel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Jumbotron Carousel -->
+  <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manual Carousel</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    #carousel-img {
+      transition: opacity 0.4s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Jumbotron Carousel Manual -->
+ <!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carousel Otomatis + Manual</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    #carousel-img {
+      transition: opacity 0.4s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Jumbotron Carousel -->
+  <section class="relative h-screen w-full overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img
+        id="carousel-img"
+        src="kantor1.jpg"
+        alt="Jumbotron"
+        class="object-cover w-full h-full opacity-100 transition-opacity duration-500 ease-in-out"
+      />
+    </div>
+
+    <div class="relative z-10 bg-black/50 h-full w-full flex flex-col justify-center items-center text-white text-center px-6">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Selamat Datang di KAP</h1>
+      <p class="text-lg md:text-xl drop-shadow">Solusi terbaik untuk masa depan bisnis Anda</p>
+      <a href="#" class="mt-6 inline-block bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-3 rounded-full transition">Pelajari Lebih Lanjut</a>
+
+      <!-- Tombol Navigasi -->
+      <div class="absolute bottom-10 flex gap-4">
+        <button id="prev-btn" class="bg-white/30 hover:bg-white/50 text-white px-4 py-2 rounded-full">&larr; Prev</button>
+        <button id="next-btn" class="bg-white/30 hover:bg-white/50 text-white px-4 py-2 rounded-full">Next &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const images = [
+      "kantor1.jpg",
+      "kantor2.jpg",
+      "kantor3.jpg"
+    ];
+
+    let index = 0;
+    const imgElement = document.getElementById("carousel-img");
+
+    // Fungsi ganti gambar
+    function changeImage(newIndex) {
+      imgElement.classList.add("opacity-0");
+      setTimeout(() => {
+        imgElement.src = images[newIndex];
+        imgElement.classList.remove("opacity-0");
+      }, 200);
+    }
+
+    // Otomatis setiap 5 detik
+    let interval = setInterval(() => {
+      index = (index + 1) % images.length;
+      changeImage(index);
+    }, 5000);
+
+    // Navigasi manual
+    document.getElementById("next-btn").addEventListener("click", () => {
+      clearInterval(interval); // Reset timer
+      index = (index + 1) % images.length;
+      changeImage(index);
+      restartInterval();
+    });
+
+    document.getElementById("prev-btn").addEventListener("click", () => {
+      clearInterval(interval); // Reset timer
+      index = (index - 1 + images.length) % images.length;
+      changeImage(index);
+      restartInterval();
+    });
+
+    function restartInterval() {
+      interval = setInterval(() => {
+        index = (index + 1) % images.length;
+        changeImage(index);
+      }, 5000);
+    }
+  </script>
+
+
+</body>
+</html>
+
+
+
+        <!-- Section Tentang Kami -->
+        <section id="tentang" class="py-16 px-4 md:px-12 max-w-7xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+              Tentang Kami
+            </h2>
+            <p class="text-gray-600 max-w-xl mx-auto">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque
+              accusamus magni asperiores. Autem, ad odit, cupiditate fuga unde
+              provident deserunt minima nostrum in, rerum facere! Vero quasi
+              tempore sunt natus.
+            </p>
+          </div>
+
+          <!-- Konten Grid -->
+          <div class="grid md:grid-cols-2 gap-10 items-center">
+            <div>
+              <img
+                src="kantor1.jpg"
+                alt="Tentang Kami"
+                class="rounded-2xl shadow-lg w-full"
+              />
+            </div>
+            <div>
+              <h3 class="text-2xl font-semibold mb-4 text-slate-700">
+                Siapa Kami?
+              </h3>
+              <p class="text-gray-700 mb-4">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
+                numquam autem, a neque animi consequatur esse, amet magni facere
+                eveniet praesentium laborum similique expedita? Molestias facere
+                quisquam vel nihil perferendis!
+              </p>
+              <p class="text-gray-700">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
+                totam nostrum enim quas, vitae officiis modi vel illum labore
+                porro numquam veniam ex eos nulla exercitationem sint atque
+                ratione natus.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section Visi dan Misi -->
+        <section class="bg-gray-50 py-16 px-4 md:px-12">
+          <div class="max-w-5xl mx-auto">
+            <h3
+              class="text-2xl md:text-3xl font-bold text-center text-slate-800 mb-10"
+            >
+              Visi & Misi
+            </h3>
+
+            <div class="grid md:grid-cols-2 gap-8">
+              <div class="bg-white rounded-xl shadow p-6">
+                <h4 class="text-xl font-semibold text-cyan-600 mb-3">
+                  Visi Kami
+                </h4>
+                <p class="text-gray-700">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Veniam minus eum numquam deserunt cumque. Praesentium optio at
+                  in commodi numquam labore nemo natus culpa harum!
+                </p>
+              </div>
+              <div class="bg-white rounded-xl shadow p-6">
+                <h4 class="text-xl font-semibold text-cyan-600 mb-3">
+                  Misi Kami
+                </h4>
+                <ul class="list-disc ml-5 text-gray-700 space-y-2">
+                  <li>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Debitis, vitae!
+                  </li>
+                  <li>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Esse, officia?
+                  </li>
+                  <li>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Impedit, magni?
+                  </li>
+                  <li>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <style>
+          /* Animasi marquee horizontal */
+          .marquee {
+            animation: marquee 20s linear infinite;
+          }
+
+          @keyframes marquee {
+            0% {
+              transform: translateX(100%);
+            }
+            100% {
+              transform: translateX(-100%);
+            }
+          }
+        </style>
+      </head>
+      <body class="bg-white text-gray-800">
+        <!-- Section Tim Kami -->
+        <section class="py-16 px-4 md:px-12 max-w-7xl mx-auto">
+          <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+              Tim Kami
+            </h2>
+            <p class="text-gray-600 max-w-xl mx-auto">
+              Orang-orang hebat di balik kesuksesan PerusahaanKu.
+            </p>
+          </div>
+
+          <!-- Grid Foto Bergerak Otomatis -->
+          <div class="overflow-hidden relative w-full">
+            <div class="flex gap-6 marquee">
+              <!-- Ulangi elemen ini untuk setiap owner -->
+              <div class="flex-shrink-0 w-48">
+                <img
+                  src="orang1.jpg"
+                  alt="Owner 1"
+                  class="rounded-full shadow-lg w-full h-auto object-cover"
+                />
+                <p class="text-center mt-2 font-medium text-slate-700">
+                  Ardiansyah SE.,M.AK.,AK.,CA.,CPA.
+                </p>
+              </div>
+              <div class="flex-shrink-0 w-48">
+                <img
+                  src="https://source.unsplash.com/200x200/?person,2"
+                  alt="Owner 2"
+                  class="rounded-full shadow-lg w-full h-auto object-cover"
+                />
+                <p class="text-center mt-2 font-medium text-slate-700">
+                  Owner 2
+                </p>
+              </div>
+              <div class="flex-shrink-0 w-48">
+                <img
+                  src="https://source.unsplash.com/200x200/?person,3"
+                  alt="Owner 3"
+                  class="rounded-full shadow-lg w-full h-auto object-cover"
+                />
+                <p class="text-center mt-2 font-medium text-slate-700">
+                  Owner 3
+                </p>
+              </div>
+              <div class="flex-shrink-0 w-48">
+                <img
+                  src="https://source.unsplash.com/200x200/?person,4"
+                  alt="Owner 4"
+                  class="rounded-full shadow-lg w-full h-auto object-cover"
+                />
+                <p class="text-center mt-2 font-medium text-slate-700">
+                  Owner 4
+                </p>
+              </div>
+              <!-- Ulangi lagi agar efek loop terlihat halus -->
+              <div class="flex-shrink-0 w-48">
+                <img
+                  src="https://source.unsplash.com/200x200/?person,5"
+                  alt="Owner 5"
+                  class="rounded-full shadow-lg w-full h-auto object-cover"
+                />
+                <p class="text-center mt-2 font-medium text-slate-700">
+                  Owner 5
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+            <!-- Section Layanan -->
+            <section id="layanan" class="py-16 px-4 md:px-12 max-w-7xl mx-auto">
+              <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+                  Layanan & Jasa Kami
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                  Kami menawarkan berbagai layanan profesional untuk membantu
+                  bisnis Anda berkembang di era digital.
+                </p>
+              </div>
+
+              <!-- Grid Layanan -->
+              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card Layanan 1 -->
+                <div
+                  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+                >
+                
+                  <h3 class="text-xl font-semibold mb-2 text-slate-700">
+                    PERPAJAKAN
+                  </h3>
+                  <p class="text-gray-600">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Magni est non ad illo minus quae possimus recusandae velit
+                    ut saepe.
+                  </p>
+                </div>
+
+                <!-- Card Layanan 2 -->
+                <div
+                  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+                >
+                
+                  <h3 class="text-xl font-semibold mb-2 text-slate-700">
+                    PENYUSUNAN ANGGARAN DAN SISTEM ANGGARAN
+                  </h3>
+                  <p class="text-gray-600">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nobis aspernatur dolorem voluptatibus pariatur ut nesciunt
+                    commodi voluptatem ullam distinctio ratione?
+                  </p>
+                </div>
+
+                <!-- Card Layanan 3 -->
+                <div
+                  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+                >
+                 
+                  <h3 class="text-xl font-semibold mb-2 text-slate-700">
+                  STUDI KELAYAKAN DAN USULAN PROYEK
+
+                  </h3>
+                  <p class="text-gray-600">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Nisi tenetur ullam recusandae doloremque aliquam. Ab
+                    sapiente impedit aut autem maxime.
+                  </p>
+                </div>
+
+                <!-- Card Layanan 4 -->
+                <div
+                  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+                >
+                
+                  <h3 class="text-xl font-semibold mb-2 text-slate-700">
+                   JASA MANAJEMEN
+                  </h3>
+                  <p class="text-gray-600">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Dolorum, facilis praesentium dolores quas temporibus
+                    consequatur odit quidem eos expedita a?
+                  </p>
+                </div>
+
+                <!-- Card Layanan 5 -->
+                <div
+                  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+                >
+                 
+                  <h3 class="text-xl font-semibold mb-2 text-slate-700">
+                    PENGALAMAN PENUGASAN
+                  </h3>
+                  <p class="text-gray-600">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Suscipit temporibus natus placeat et adipisci sequi fugiat
+                    maxime! Nam, ut esse?
+                  </p>
+                </div>
+
+                <!-- Card Layanan 6 -->
+                <div
+                  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+                >
+                  
+                  <h3 class="text-xl font-semibold mb-2 text-slate-700">
+                    AGREED UPON PROCEDURE (AUP) KPPK
+                  </h3>
+                  <p class="text-gray-600">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Suscipit asperiores doloribus debitis consequuntur corporis
+                    optio aspernatur tempora consequatur illum magni!
+                  </p>
+                </div>
+                <!-- Card Layanan 6 -->
+                <div
+                  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+                >
+                 
+                  <h3 class="text-xl font-semibold mb-2 text-slate-700">
+                    AGREED UPON PROCEDURE (AUP) DUE DILIGENCE (UJI TUNTAS)
+                  </h3>
+                  <p class="text-gray-600">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Suscipit asperiores doloribus debitis consequuntur corporis
+                    optio aspernatur tempora consequatur illum magni!
+                  </p>
+                </div>
+                <!-- Card Layanan 6 -->
+                <div
+                  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+                >
+                 
+                  <h3 class="text-xl font-semibold mb-2 text-slate-700">
+                    AKUNTANSI DAN KEUANGAN SEKTOR PUBLIK
+                  </h3>
+                  <p class="text-gray-600">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Suscipit asperiores doloribus debitis consequuntur corporis
+                    optio aspernatur tempora consequatur illum magni!
+                  </p>
+                </div>
+                <!-- Card Layanan 6 -->
+                <div
+                  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+                >
+                  <h3 class="text-xl font-semibold mb-2 text-slate-700">
+                    
+AKUNTANSI DAN KEUANGAN SEKTOR PUBLIK
+PEMERIKSAAN UMUM (GENERAL AUDIT)
+                  </h3>
+                  <p class="text-gray-600">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Suscipit asperiores doloribus debitis consequuntur corporis
+                    optio aspernatur tempora consequatur illum magni!
+                  </p>
+                </div>
+                <!-- Card Layanan 6 -->
+                <div
+                  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+                >
+                  <h3 class="text-xl font-semibold mb-2 text-slate-700">
+                    PEMERIKSAAN OPERASIONAL/MANAJEMEN/AUDIT KINERJA AKHIR MASA JABATAN DEWAN KOMISARIS/PENGAWAS DAN DIREKSI/AUDIT KAJI ULANG FUNGSI SKAI
+                  </h3>
+                  <p class="text-gray-600">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Suscipit asperiores doloribus debitis consequuntur corporis
+                    optio aspernatur tempora consequatur illum magni!
+                  </p>
+                </div>
+                <!-- Card Layanan 6 -->
+                <div
+                  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+                >
+                  <h3 class="text-xl font-semibold mb-2 text-slate-700">
+                    PEMERIKSAAN KHUSUS/AGREED UPON PROCEDURE (AUP)
+                  </h3>
+                  <p class="text-gray-600">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Suscipit asperiores doloribus debitis consequuntur corporis
+                    optio aspernatur tempora consequatur illum magni!
+                  </p>
+                </div>
+                <!-- Card Layanan 6 -->
+                <div
+                  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+                >
+                  <h3 class="text-xl font-semibold mb-2 text-slate-700">
+                    BANTUAN AKUNTANSI
+                  </h3>
+                  <p class="text-gray-600">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Suscipit asperiores doloribus debitis consequuntur corporis
+                    optio aspernatur tempora consequatur illum magni!
+                  </p>
+                </div>
+                <!-- Card Layanan 6 -->
+                <div
+                  class="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition"
+                >
+                  <h3 class="text-xl font-semibold mb-2 text-slate-700">
+                    PENYUSUNAN SISTEM INFORMASI AKUNTANSI (SIA)
+                  </h3>
+                  <p class="text-gray-600">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Suscipit asperiores doloribus debitis consequuntur corporis
+                    optio aspernatur tempora consequatur illum magni!
+                  </p>
+                </div>
+              </div>
+            </section>
+
+                <!-- Section Daftar Client -->
+                <section class="py-16 px-4 md:px-12 max-w-7xl mx-auto">
+                  <div class="text-center mb-12">
+                    <h2
+                      class="text-3xl md:text-4xl font-bold text-slate-800 mb-4"
+                    >
+                      Client Kami
+                    </h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                      Kami telah dipercaya oleh berbagai perusahaan dan
+                      organisasi untuk memberikan solusi digital terbaik.
+                    </p>
+                  </div>
+
+                  <!-- Grid Logo Client -->
+                  <div
+                    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center"
+                  >
+                    <!-- Client 1 -->
+                    <div>
+                      <img
+                        src="https://via.placeholder.com/120x60?text=Client+1"
+                        alt="Client 1"
+                        class="object-contain grayscale hover:grayscale-0 transition w-28 h-16"
+                      />
+                    </div>
+
+                    <!-- Client 2 -->
+                    <div>
+                      <img
+                        src="https://via.placeholder.com/120x60?text=Client+2"
+                        alt="Client 2"
+                        class="object-contain grayscale hover:grayscale-0 transition w-28 h-16"
+                      />
+                    </div>
+
+                    <!-- Client 3 -->
+                    <div>
+                      <img
+                        src="https://via.placeholder.com/120x60?text=Client+3"
+                        alt="Client 3"
+                        class="object-contain grayscale hover:grayscale-0 transition w-28 h-16"
+                      />
+                    </div>
+
+                    <!-- Client 4 -->
+                    <div>
+                      <img
+                        src="https://via.placeholder.com/120x60?text=Client+4"
+                        alt="Client 4"
+                        class="object-contain grayscale hover:grayscale-0 transition w-28 h-16"
+                      />
+                    </div>
+
+                    <!-- Client 5 -->
+                    <div>
+                      <img
+                        src="https://via.placeholder.com/120x60?text=Client+5"
+                        alt="Client 5"
+                        class="object-contain grayscale hover:grayscale-0 transition w-28 h-16"
+                      />
+                    </div>
+
+                    <!-- Client 6 -->
+                    <div>
+                      <img
+                        src="https://via.placeholder.com/120x60?text=Client+6"
+                        alt="Client 6"
+                        class="object-contain grayscale hover:grayscale-0 transition w-28 h-16"
+                      />
+                    </div>
+
+                    <!-- Tambahan jika ingin -->
+                    <div>
+                      <img
+                        src="https://via.placeholder.com/120x60?text=Client+7"
+                        alt="Client 7"
+                        class="object-contain grayscale hover:grayscale-0 transition w-28 h-16"
+                      />
+                    </div>
+
+                    <div>
+                      <img
+                        src="https://via.placeholder.com/120x60?text=Client+8"
+                        alt="Client 8"
+                        class="object-contain grayscale hover:grayscale-0 transition w-28 h-16"
+                      />
+                    </div>
+                  </div>
+                </section>
+
+                    <!-- Section Kontak -->
+                    <section class="py-16 px-4 md:px-12 max-w-6xl mx-auto">
+                      <div class="text-center mb-12">
+                        <h2
+                          class="text-3xl md:text-4xl font-bold text-slate-800 mb-4"
+                        >
+                          Kontak Kami
+                        </h2>
+                        <p class="text-gray-600 max-w-xl mx-auto">
+                          Jangan ragu untuk menghubungi kami melalui form atau
+                          informasi berikut.
+                        </p>
+                      </div>
+
+                      <div class="grid md:grid-cols-2 gap-12">
+                        <!-- Formulir Kontak -->
+                        <form
+                          class="bg-white shadow-md rounded-xl p-8 space-y-6"
+                        >
+                          <div>
+                            <label
+                              class="block mb-2 text-sm font-medium text-slate-700"
+                              >Nama</label
+                            >
+                            <input
+                              type="text"
+                              placeholder="Nama Anda"
+                              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:outline-none"
+                            />
+                          </div>
+                          <div>
+                            <label
+                              class="block mb-2 text-sm font-medium text-slate-700"
+                              >Email</label
+                            >
+                            <input
+                              type="email"
+                              placeholder="Alamat Email"
+                              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:outline-none"
+                            />
+                          </div>
+                          <div>
+                            <label
+                              class="block mb-2 text-sm font-medium text-slate-700"
+                              >Pesan</label
+                            >
+                            <textarea
+                              rows="5"
+                              placeholder="Tulis pesan Anda..."
+                              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:outline-none"
+                            ></textarea>
+                          </div>
+                          <button
+                            type="submit"
+                            class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-3 rounded-lg transition"
+                          >
+                            Kirim Pesan
+                          </button>
+                        </form>
+
+                        <!-- Info Kontak -->
+                        <div class="space-y-6">
+                          <div>
+                            <h3
+                              class="text-xl font-semibold text-slate-700 mb-2"
+                            >
+                              Alamat
+                            </h3>
+                            <p class="text-gray-600">
+                              Kencana Tower Lt.Mezzanine, Jl Meruya Ilir No. 88 RT 001 RW 005, Kel.Meruya Utara, Kec.Kembangan, Jakarta Barat, DKI Jakarta - 11620
+                            </p>
+                          </div>
+                          <div>
+                            <h3
+                              class="text-xl font-semibold text-slate-700 mb-2"
+                            >
+                              Telepon
+                            </h3>
+                            <p class="text-gray-600">+62 8137 3203 203</p>
+                          </div>
+                          <div>
+                            <h3
+                              class="text-xl font-semibold text-slate-700 mb-2"
+                            >
+                              Email
+                            </h3>
+                            <p class="text-gray-600">
+                              ardiansyah.cpa@gmail.com
+                            </p>
+                          </div>
+                          <div>
+                            <h3
+                              class="text-xl font-semibold text-slate-700 mb-2"
+                            >
+                              Jam Operasional
+                            </h3>
+                            <p class="text-gray-600">
+                              Senin – Jumat, 09.00 – 17.00 WIB
+                            </p>
+                          </div>
+                          <div>
+                            <h3
+                              class="text-xl font-semibold text-slate-700 mb-2"
+                            >
+                              Peta Lokasi
+                            </h3>
+                            <iframe
+                              class="rounded-lg w-full h-48"
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.8133587198385!2d106.82715321530703!3d-6.175110095533697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3f3a0f9e4b9%3A0x21b3d9e8e998d4f9!2sMonas!5e0!3m2!1sen!2sid!4v1673334444444"
+                              allowfullscreen=""
+                              loading="lazy"
+                              referrerpolicy="no-referrer-when-downgrade"
+                            ></iframe>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+  </body>
+</html>
